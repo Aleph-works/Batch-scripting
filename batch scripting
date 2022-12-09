@@ -1,0 +1,341 @@
+
+Introduction to Batch Scripting Commands
+
+We can simply say that the batch file is a simple text file with .bat extension, which is generally written by using the text editor like sublime, notepad++ and UltraEdit, etc.
+
+.bat extension shows that it is a batch file which will run over the command prompt, this file contains several commands in particular sequence to perform or automating a task using command prompt. we can run the batch file by double click on it. and it will start executing the command on command prompt one by one in the command prompt.
+
+What is Batch Scripting?
+
+A batch script is a file which contains a sequence of command needs to be executed on windows command prompt, batch script is always referred for executing a series of command over the windows command prompt, in Windows operating system it is known as batch script, whereas in Linux it is known as a shell script.
+
+When we execute the batch script file over the command prompt, all the command get executed one by one by following the sequence written in the batch file. each command is supplied as a command parameter for command prompt, the output of the batch file can be control or logged into a file, which helps us to keep record and identifying the error while executing the command.
+
+List of Batch Scripting Commands
+
+Following are the list of Batch Scripting Commands:
+
+Echo: It shows the output of the current command which is being executed, by default echo is on for all the batch script fils, it means when the sequence of command will be executed one by one in the on the command prompt, the corresponding command output will be displayed over the command prompt, if we want we can turn it off by writing @echo of.
+using @ before the echo off / echo on command prevents itself from displaying itself as echo as in output.
+Rem: rem is used to comment on the line (command) in the batch file, the line starting with rem is ignored by the command prompt. instead of using rem we can use:: (double colon) operating to make the line commented.
+Call:call command is used to call another batch file from inside a batch file, the batch file which call another batch file knows as caller and the file which is called known as callee, call command always return to the caller batch file even if the error exists in the callee batch file, call command always share the variable reference among the caller/callee batch files, if there is two batch file which is dependent on each other in this case call command is used to call dependent batch file from one batch file, call always execute the file in the same window and share variable context among the commands.
+Start: start command is used to call another batch file from inside a batch file, the main difference is, start command always open a new window to execute a command file and it never share the variable context among the file, the file which is being called from inside a batch file will run as a separate process and open the new command console to run the series of command.
+GOTO: goto command jump to a specific label of batch file, goto command is used with label, which indicates the specific label name in batch file, label always start with : (colon), name of the label is defined just after the goto (on which the goto command moves the control) execute the command and it return from where it was jumped to that label.
+|: When we need to use the output of the one command as input of the second command “|” operator is used between the command, it refers to the output of the one command as input of the second command.
+&: It separates the command into multiple lines.
+&&: It executes the current command if and only if the previous command is successfully run or its error level is zero.
+>: It used to write the command output in the file.
+>>: It appends the output of the current command which is being executed into the file.
+
+Certain Important Batch Commands
+
+Here we discuss some important Batch Scripting Commands:
+
+Command Name	Uses
+Taskill -f /pid 2035	Killing the process of given process id
+Ipconfig /all	Display system IP information
+attrib	Set or display the file attribute
+cd	Change the directory
+Shutdown	Shutdown the computer
+Sort	To sort the file content
+Systeminfo	Display all the system configuration
+Tasklist	Display the all running task list
+Time	Set or display the system time
+Title	Set the batch script title
+Type	Display the file content on the console
+Ver	Display the windows version
+Copy	Copy a single file from or to the directory
+Xcopy	It copies the file and its subsidiaries
+Ren	Displaying remaining file and directory
+Assoc	display association of the file extension
+Examples
+Below are mentioned the examples of Batch Scripting Commands:
+
+Example #1
+@echo off
+echo 'Hello world from educba'
+Let’s save this batch file as test.bat and run this file by double-clicking on it, the following output you will get.
+
+Output:
+
+Hello world from educba
+
+Example #2
+@echo off
+echo  'System ip information'
+ipconfig
+rem ipconfig /all
+Lets save this batch file as test.bat and run this file by double-clicking on it, this will print the system IP information of the system on which the batch file is running, the line which starts with rem is ignored hence the information related to config /all command will not be printed., we can also use:: (double colon) operator instead of ram to make the config /all line as comment.
+
+Comments are very useful to write a description for the command in a large batch file which contains any number of command and reference of another batch file; it makes the batch file easy to understand and modifiable.
+
+Example #3
+@echo off
+echo  'System port information'
+netstat -ano | findstr '8080'
+This batch script prints the process information which is running on or port number 8080.
+
+Example #4
+@echo off
+echo  'run java jar file with name demo'
+java -jar target/demo.jar > log.txt
+This will run java demo jar file, just navigate to your java maven base directory and run this batch file.
+
+Example #5
+@echo off
+echo  'Trace route for given host name'
+@echo off
+title trace the root to the host
+Set /p host_name= enter hostname or ip for which you want to trace the route:
+if defined host_name (
+powershell -Command tracert -d %Host% >>tracert_result.txt
+)
+This batch file will take the hostname or IP address of the destination and will append the traceroute result of that destination host into tracert_result.txt file, this file will run on Windows Powershell.
+
+Example #6
+@echo off
+echo  ''deploy project on server'
+call package.bat
+call integration-test.bat
+call deploy.bat
+Example #7
+@echo off
+echo  'start the project deployment assembly'
+cd "\package\demo\"
+start package.bat
+cd "\test\demo\"
+start test.bat
+cd "\deploy\demo\"
+start deploy.bat
+This batch file will run each of the files which belong to package, test, and deployment respectively; as a separate manageable process and will open a new console to log a command output for each of the batch file.
+
+Commands & Description
+1	VER
+This batch command shows the version of MS-DOS you are using.
+
+2	ASSOC
+This is a batch command that associates an extension with a file type (FTYPE), displays existing associations, or deletes an association.
+
+3	CD
+This batch command helps in making changes to a different directory, or displays the current directory.
+
+4	CLS
+This batch command clears the screen.
+
+5	COPY
+This batch command is used for copying files from one location to the other.
+
+6	DEL
+This batch command deletes files and not directories.
+
+7	DIR
+This batch command lists the contents of a directory.
+
+8	DATE
+This batch command help to find the system date.
+
+9	ECHO
+This batch command displays messages, or turns command echoing on or off.
+
+10	EXIT
+This batch command exits the DOS console.
+
+11	MD
+This batch command creates a new directory in the current location.
+
+12	MOVE
+This batch command moves files or directories between directories.
+
+13	PATH
+This batch command displays or sets the path variable.
+
+14	PAUSE
+This batch command prompts the user and waits for a line of input to be entered.
+
+15	PROMPT
+This batch command can be used to change or reset the cmd.exe prompt.
+
+16	RD
+This batch command removes directories, but the directories need to be empty before they can be removed.
+
+17	REN
+Renames files and directories
+
+18	REM
+This batch command is used for remarks in batch files, preventing the content of the remark from being executed.
+
+19	START
+This batch command starts a program in new window, or opens a document.
+
+20	TIME
+This batch command sets or displays the time.
+
+21	TYPE
+This batch command prints the content of a file or files to the output.
+
+22	VOL
+This batch command displays the volume labels.
+
+23	ATTRIB
+Displays or sets the attributes of the files in the curret directory
+
+24	CHKDSK
+This batch command checks the disk for any problems.
+
+25	CHOICE
+This batch command provides a list of options to the user.
+
+26	CMD
+This batch command invokes another instance of command prompt.
+
+27	COMP
+This batch command compares 2 files based on the file size.
+
+28	CONVERT
+This batch command converts a volume from FAT16 or FAT32 file system to NTFS file system.
+
+29	DRIVERQUERY
+This batch command shows all installed device drivers and their properties.
+
+30	EXPAND
+This batch command extracts files from compressed .cab cabinet files.
+
+31	FIND
+This batch command searches for a string in files or input, outputting matching lines.
+
+32	FORMAT
+This batch command formats a disk to use Windows-supported file system such as FAT, FAT32 or NTFS, thereby overwriting the previous content of the disk.
+
+33	HELP
+This batch command shows the list of Windows-supplied commands.
+
+34	IPCONFIG
+This batch command displays Windows IP Configuration. Shows configuration by connection and the name of that connection.
+
+35	LABEL
+This batch command adds, sets or removes a disk label.
+
+36	MORE
+This batch command displays the contents of a file or files, one screen at a time.
+
+37	NET
+Provides various network services, depending on the command used.
+
+38	PING
+This batch command sends ICMP/IP "echo" packets over the network to the designated address.
+
+39	SHUTDOWN
+This batch command shuts down a computer, or logs off the current user.
+
+40	SORT
+This batch command takes the input from a source file and sorts its contents alphabetically, from A to Z or Z to A. It prints the output on the console.
+
+41	SUBST
+This batch command assigns a drive letter to a local folder, displays current assignments, or removes an assignment.
+
+42	SYSTEMINFO
+This batch command shows configuration of a computer and its operating system.
+
+43	TASKKILL
+This batch command ends one or more tasks.
+
+44	TASKLIST
+This batch command lists tasks, including task name and process id (PID).
+
+45	XCOPY
+This batch command copies files and directories in a more advanced way.
+
+46	TREE
+This batch command displays a tree of all subdirectories of the current directory to any level of recursion or depth.
+
+47	FC
+This batch command lists the actual differences between two files.
+
+48	DISKPART
+This batch command shows and configures the properties of disk partitions.
+
+49	TITLE
+This batch command sets the title displayed in the console window.
+
+50	SET
+Displays the list of environment variables on the current system.
+
+
+
+Batch Scripting consists of a series of commands to be executed by the command-line interpreter, stored in a plain text file. It is not commonly used as a programming language and so it is not commonly practiced and is not trending but its control and dominance in the Windows environment can never be neglected. Almost every task and every action can be performed and executed by a simple sequence of commands typed on the Windows Command Prompt. 
+
+Batch Script execution
+
+There are 2 ways to execute a batch script.
+
+Type the batch script in the command prompt.
+Write the code of script in a file and execute it through the command prompt.
+Typing commands again and again on the terminal can be a very tedious task to do if we have a very lengthy code. So option 2 is generally preferred to create batch files.
+
+Creating Batch Files
+Steps to create a Batch file are pretty simple:-
+
+
+Create a new text file with a ‘.txt‘ extension.
+Now rename this file with extension as ‘.bat‘ this creates a Batch file.
+Now open this .bat file in any text editor and start scripting.
+To begin scripting we must be aware of the commands of the batch interface. The commands of Batch are sometimes similar to Linux Scripting commands.
+
+Batch Commands
+Basic batch commands are all case insensitive and can be used to perform a specific set of instructions:-
+
+DIR – The ‘dir’ command is used to get all the directories, sub-directories, and files present in the current working directory.
+CD – The ‘cd’ command is used to change the current working directory.
+VER – The ‘ver’ command tells the version of the user’s Windows.
+CLS – The ‘cls’ command is used to clear the screen of the command prompt.
+ECHO – The ‘echo’ command is by default ‘on’ but if we turn it off by ‘echo off’ it turns off prompt till the time ‘echo on’ is passed.
+@ – The ‘@’ if used before any command hides which command is running.
+@ECHO OFF – This commands serves as the start point to any basic batch script as it hides the prompt with ‘echo off’ and hides ‘echo off’ command with ‘@’.
+HELP – This command tells us all about the commands available in the cmd. It runs only if the cmd is run as an administrator.
+Batch commands
+How to execute a batch command through cmd(command prompt)
+
+Data Types in Batch
+Integers – Batch supports the whole set of positive and negative integers
+Strings – Unlike most programming languages we rarely use (“”) double-quotes here but we use ‘echo‘ command to print strings
+Note: Batch doesn’t support floating-point values i.e. values with precision.
+
+Variables in Batch Scripting
+A variable is an entity that stores a specific value and allows the user to perform any set of instructions on it. To create variables we use the command “SET” command. A variable, unlike many programming languages, can be assigned simply without specifying any data type to it.
+
+SET my_variable=Hello World
+To print this variable we need to use the command ECHO but with a slight variation. Since echo  prints both strings and variables to print string we simply write the string after ECHO as
+
+ECHO Hello World
+But to print a variable we use ECHO in a different way bypassing the variable names inside two percent signs (%)  so that variable name doesn’t become a string-
+
+ECHO %my_variable%
+Working with Batch Scripts
+Creating our own Batch Scripts
+Example 1: To print “GeeksForGeeks” on the command prompt with and without using a variable.
+
+Without using a variable 
+
+ECHO GeeksForGeeks
+With a variable
+
+SET my_var=GeeksForGeeks
+ECHO %my_var%
+creating-batch-script
+
+Arithmetic Operators in a Batch Script
+List of operators :
+
+SET /A sum=1+1     ::addition operator
+ECHO %sum%     
+SET /A mul=7*9     ::multiplication operator
+ECHO %mul%
+SET /A div=9/3     ::Division operator
+ECHO %div%
+SET /A assign=10   ::Assignment operator
+ECHO %assign%
+SET /A assign+=15  ::Increment then assignment operator
+ECHO %assign%
+SET /A mod= 10%3   ::Modulus/Remainder operator
+ECHO %mod%
+
